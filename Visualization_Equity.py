@@ -26,10 +26,6 @@ def Create_Equity_Graph():
     formatter.set_scientific(False)
     ax.yaxis.set_major_formatter(formatter=formatter)
     plt.axhline(y = initial_capital, color = 'grey', linestyle = '--')
-    #covid-range
-    plt.axvline(x = pd.Timestamp(2020,2,1), color = 'grey', linestyle = ':')
-    plt.axvline(x = pd.Timestamp(2020,4,20), color = 'grey', linestyle = ':')
-    plt.axvline(x = pd.Timestamp(2007,12,1), color = 'grey', linestyle = ':')
     plt.annotate(
         text = 'Break-even Point',
         xy = (pd.Timestamp(2023,1,1), initial_capital),
