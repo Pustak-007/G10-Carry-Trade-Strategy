@@ -30,7 +30,7 @@ This repository contains the Python code and analysis for a comprehensive backte
 2. Install the required dependencies:
    ```
    pip install pandas matplotlib yfinance fredapi dukascopy-python
-   Note: dukascopy-python is not explicitly required for this code to run, I used it to assess if there were discrepencies (worth noting) in  historical price data between different APIs.
+   Note: dukascopy-python is not explicitly required for this code to run, I used it to assess if there were discrepancies (worth noting) in  historical price data between different APIs.
    ```
 3. Ensure you have API access configured for fredapi and any necessary credentials for Pepperstone’s MetaTrader 5 data extraction. If you are using a mac, installation of MetaTrader 5 API is not possible, so either have a virtual box downloaded, or have the data downloaded locally on to your mac as I have done.
 
