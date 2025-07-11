@@ -129,10 +129,8 @@ def giveUSDNOK_FullPrice_data():
     df = df.reindex(daily_index)
     df.drop('Volume', axis = 1, inplace = True)
     #This extraction of close price data from fred for a specific period was due to data
-    # unavailability in yfinance -- those days weren't holidays at all, so to mitigate this 
-    # discrepancy, data is taken from fred for that time. The correlation between the two historical
-    # price data sets is more than 0.99 (calculated in python via Pandas), so use of that data set
-    #  is valid for this case. 
+    # unavailability in yfinance , the correlation between the historical price data from fred 
+    # and from yfinance is more than 0.99 (calculated in python) , so the use is perfectly valid. 
     start_for_fred_data = pd.Timestamp(2003,5,2)
     end_for_fred_data = pd.Timestamp(2003,11,30)
     new_df_fred = fred.get_series("DEXNOUS", start, end).to_frame(name = 'Close')
