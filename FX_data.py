@@ -10,6 +10,9 @@ fred = Fred(api_key=api_key)
 start = Interbank_data.start
 end = Interbank_data.end
 daily_index = pd.date_range(start = start, end = end, freq = 'D')
+
+#Function to change the look/format of the data extracted locally
+# -- to make it look more consistent with yfinance data retrieval
 def Historical_PriceData(file_path):
     df = pd.read_csv(file_path, delimiter='\t')
     df = df.rename(columns={
@@ -29,18 +32,17 @@ def Historical_PriceData(file_path):
     df[(df.index.dayofweek == 5) | (df.index.dayofweek == 6)] = np.nan
     return df
 
-#Functions to retrieve full price data for different pairs.
+
 #Note the USDNOK is being obtained from the yfinance API, and the orientation of that
 # -- data set is a little different than the local ones.
 
-# We are trying to make our local data retrieval look data retrieval from yfinance but retaining 
+# We are trying to make our local data retrieval look like data retrieval from yfinance but retaining 
 # -- certain minor differences , just as a memory heuristic that 'USDNOK' is from yfinance
 
-# Also important nuance to note: Metatrader is also showing data for some major holidays
-# -- they are difficult to account for, because different years there seem to be different length of
-# -- closure periods - around christmas. So, you can have USDNOK data as a kind of reference that which
-# -- days were the ones where NY session was closed, so the tickvolume corresponding to that data in MT5
-# -- is also lower. Hope this makes sense!
+#We are using USDNOK data's NaN value corresponding indices as a reference to understand
+# the days when the NY session was closed or halted.
+
+#Functions to retrieve historical price data:
 
 def giveEURUSD_FullPrice_data():
     path = '/Users/pustak/Desktop/G10 Carry Portfolio/Currency Price Historical Data - Meta Trader/EURUSD.csv'
